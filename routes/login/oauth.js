@@ -1,13 +1,11 @@
 const router=require('express').Router();
 const passport=require("passport");
 
-
+// Routes for Google OAuth 
 router.get('/login/google',function(req, res, next) { console.log('hi'); next(); },
-  passport.authenticate('google', { scope: ['profile'] }));
+  passport.authenticate('google', { scope: ['profile','email'] }));
 
-// router.get('/hi', function(req, res) { console.log('hi'); })
-
-
+// Callback route for Google after Authentication 
 router.get('/login/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
@@ -16,6 +14,17 @@ router.get('/login/google/callback',
       } else {
           res.redirect('http://localhost:3000/');
       }
+  });
+
+  // Route for Twitter OAuth
+  router.get("/login/twitter", passport.authenticate("twitter"));
+
+  // Callback Route for Twitter after Authentication
+  router.get('/auth/twitter/callback', 
+  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
   });
 
 module.exports=router;

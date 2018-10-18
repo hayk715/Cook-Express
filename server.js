@@ -4,15 +4,40 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const routes=require("./routes");
 const passportSetup=require("./config/passportsetup");
+var session = require('express-session');
+var mongoose = require('mongoose');
 
-// Define middleware here
+// Connect to Mongoose database
+
+// mongoose.connect('mongodb://localhost/passport-social-auth');
+
+// Needed this Session for the Twitter OAuth, checks if its in production or development 
+
+var sess = {
+  secret: 'keyboard cat',
+  cookie: {}
+}
+ 
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+  sess.cookie.secure = true // serve secure cookies
+}
+ 
+app.use(session(sess))
+
+// More middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+
 // Serve up static assets 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("/client/build"));
 }
+// Bring in all of the routes 
+
 app.use(routes)
+
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));

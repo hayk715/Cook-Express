@@ -5,6 +5,24 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 
 class App extends Component {
+  // state={
+  //   data:null
+  // };
+
+  // componentDidMount(){
+  //   this.useServer()
+  //   .then(res => this.setState({ data: res.express }))
+  //   .catch(err => console.log(err));
+  // }
+  // useServer = async () => {
+  //   const response = await fetch('/');
+  //   const body = await response.json();
+
+  //   if (response.status !== 200) {
+  //     throw Error(body.message) 
+  //   }
+  //   return body;
+  // };
   render() {
     return (
       <div className="App">
@@ -21,7 +39,9 @@ class App extends Component {
           >
             Learn React
           </a>
-          <Router><Link to="/login/google">Log in using google</Link></Router>
+          <a href="/login/google">log on with Google</a>
+          <a href="/login/twitter">log on with Twitter</a>
+          {/* <Router><Link to="localhost:3001/login/google">Log in using google</Link></Router> */}
           
         </header>
       </div>
