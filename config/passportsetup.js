@@ -1,6 +1,6 @@
 const passport=require("passport");
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var keys=require("./keys");
+var keys=require("./keys/keys");
 var TwitterStrategy=require("passport-twitter");
 
 // Google Oauth 

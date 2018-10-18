@@ -7,4 +7,6 @@ const userSchema= new Schema({
     email:String
     
 });
+
+const User=mongoose.model("user",userSchema);
 module.exports=mongoose
