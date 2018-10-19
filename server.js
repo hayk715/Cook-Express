@@ -6,10 +6,13 @@ const routes=require("./routes");
 const passportSetup=require("./config/passportsetup");
 var session = require('express-session');
 var mongoose = require('mongoose');
+const keys=require("./config/keys/keys");
 
 // Connect to Mongoose database
 
-// mongoose.connect('mongodb://localhost/passport-social-auth');
+ mongoose.connect('mongodb://'+keys.db.userName+':'+keys.db.password+'@ds141902.mlab.com:41902/cookexpress',()=>{
+   console.log("conneted to mongoDB");
+ });
 
 // Needed this Session for the Twitter OAuth, checks if its in production or development 
 

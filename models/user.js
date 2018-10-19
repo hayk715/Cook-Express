@@ -2,11 +2,12 @@ const mongoose=require("mongoose");
 const Schema=mongoose.Schema;
 
 const userSchema= new Schema({
-    userId:String,
+    googleId:String,
     userName:String,
     email:String
     
 });
 
 const User=mongoose.model("user",userSchema);
-module.exports=mongoose
+
+module.exports=User;
