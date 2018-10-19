@@ -7,6 +7,10 @@ const passportSetup=require("./config/passportsetup");
 var session = require('express-session');
 var mongoose = require('mongoose');
 const keys=require("./config/keys/keys");
+const bodyParser=require("body-parser");
+const passport=require("passport");
+
+app.use(bodyParser());
 
 // Connect to Mongoose database
 
@@ -14,11 +18,17 @@ const keys=require("./config/keys/keys");
    console.log("conneted to mongoDB");
  });
 
-// Needed this Session for the Twitter OAuth, checks if its in production or development 
+// More middleware here
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
+
+// Needed this Session for the Twitter OAuth, checks if its in production or development 
 var sess = {
   secret: 'keyboard cat',
-  cookie: {}
+  cookie: {
+
+  }
 }
  
 if (app.get('env') === 'production') {
@@ -27,10 +37,10 @@ if (app.get('env') === 'production') {
 }
  
 app.use(session(sess))
+app.use(passport.initialize());
+app.use(passport.session());
 
-// More middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
 
 
 // Serve up static assets 

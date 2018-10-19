@@ -4,6 +4,18 @@ var keys=require("./keys/keys");
 var TwitterStrategy=require("passport-twitter");
 const User=require("../models/user");
 
+// serialize 
+passport.serializeUser((user,done)=>{
+  done(null,user.id);
+});
+
+// deserialize
+passport.deserializeUser((id,done)=>{
+  User.findById(id).then((user)=>{
+    done(null,user);
+  });
+});
+
 // Google Oauth 
 passport.use(new GoogleStrategy({
     clientID: keys.google.clientId,
@@ -17,6 +29,8 @@ passport.use(new GoogleStrategy({
          email:profile.emails[0].value
         }).save().then((userInfo)=>{
           console.log("you just saved this"+userInfo);
+          done(null,userInfo)
+          
         })
 
   }
@@ -29,5 +43,6 @@ passport.use(new TwitterStrategy({
 },
 function(token, tokenSecret, profile, cb) {
  console.log(profile);
+ 
 }
 ));
