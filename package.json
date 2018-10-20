@@ -2,7 +2,6 @@
   "name": "cook-express",
   "version": "0.1.0",
   "private": true,
-<<<<<<< HEAD
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
@@ -14,8 +13,6 @@
     "passport-twitter": "^1.0.4",
     "path": "^0.12.7"
   },
-=======
->>>>>>> b88eb192c3b5b0da4a0b21a369bd9381191d2bbd
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
