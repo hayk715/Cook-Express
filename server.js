@@ -10,6 +10,8 @@ const keys=require("./config/keys/keys");
 const bodyParser=require("body-parser");
 const passport=require("passport");
 
+// body-parser middleware 
+
 app.use(bodyParser());
 
 // Connect to Mongoose database
@@ -35,7 +37,8 @@ if (app.get('env') === 'production') {
   app.set('trust proxy', 1) // trust first proxy
   sess.cookie.secure = true // serve secure cookies
 }
- 
+//  Passport session for deserialize and serialize
+
 app.use(session(sess))
 app.use(passport.initialize());
 app.use(passport.session());
@@ -47,11 +50,11 @@ app.use(passport.session());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("/client/build"));
 }
-// Bring in all of the routes 
+// Bring in all of the routes from the routes folder r
 
 app.use(routes)
 
-
+// bu
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });

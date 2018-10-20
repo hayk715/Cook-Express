@@ -2,8 +2,10 @@ const mongoose=require("mongoose");
 const Schema=mongoose.Schema;
 
 const userSchema= new Schema({
-    googleId:String,
+    googleId:{type:String,default:null},
+    twitterId:{type:String,default:null},
     userName:String,
+    password:{type:String,default:null},
     email:String
     
 });
