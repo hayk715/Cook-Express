@@ -1,20 +1,18 @@
 {
   "name": "cook-express",
-<<<<<<< HEAD
-  "version": "1.0.0",
-  "description": "express app",
-  "main": "server.js",
-=======
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.5.2",
-    "react-bootstrap": "^0.32.4",
-    "react-dom": "^16.5.2",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.4"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.3.4",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-twitter": "^1.0.4",
+    "path": "^0.12.7"
   },
->>>>>>> master
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -28,16 +26,5 @@
   "bugs": {
     "url": "https://github.com/MissAraquel/Cook-Express/issues"
   },
-  "homepage": "https://github.com/MissAraquel/Cook-Express#readme",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "express-session": "^1.15.6",
-    "mongoose": "^5.3.4",
-    "passport": "^0.4.0",
-    "passport-facebook": "^2.1.1",
-    "passport-google-oauth": "^1.0.0",
-    "passport-twitter": "^1.0.4",
-    "path": "^0.12.7"
-  }
+  "homepage": "https://github.com/MissAraquel/Cook-Express#readme"
 }
