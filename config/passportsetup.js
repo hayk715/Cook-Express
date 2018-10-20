@@ -5,15 +5,24 @@ var TwitterStrategy=require("passport-twitter");
 const User=require("../models/user");
 
 // serialize 
-passport.serializeUser((user,done)=>{
-  done(null,user.id);
+// passport.serializeUser((user,done)=>{
+//   done(null,user.twitterId);
+// });
+
+// // deserialize
+// passport.deserializeUser((id,done)=>{
+//   User.findById(id).then((user)=>{
+//     done(null,user);
+//   });
+// });
+
+
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
 });
 
-// deserialize
-passport.deserializeUser((id,done)=>{
-  User.findById(id).then((user)=>{
-    done(null,user);
-  });
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
 });
 
 // Google Oauth 
@@ -43,6 +52,7 @@ passport.use(new TwitterStrategy({
 },
 function(token, tokenSecret, profile, cb) {
  console.log(profile);
+ return cb(null, profile)
  
 }
 ));

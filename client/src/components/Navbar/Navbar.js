@@ -17,8 +17,8 @@ const SimpleNavbar = props => (
     <Nav>
     </Nav>
     <Nav pullRight>
-      <NavItem eventKey={1} href="#">
-        Log In
+      <NavItem eventKey={1} href='/login/google'>
+      Login
       </NavItem>
       <NavItem eventKey={2} href="#">
         Sign Up

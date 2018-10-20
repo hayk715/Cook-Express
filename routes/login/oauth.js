@@ -20,7 +20,7 @@ router.get('/login/google/callback',
   router.get("/login/twitter", passport.authenticate("twitter"));
 
   // Callback Route for Twitter after Authentication
-  router.get('/auth/twitter/callback', 
+  router.get('/login/twitter/callback', 
   passport.authenticate('twitter', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
