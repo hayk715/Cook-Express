@@ -2,10 +2,7 @@
 
 # dependencies
 node_modules
-# 
 
-# Keys
-keys/
 # testing
 /coverage
 
