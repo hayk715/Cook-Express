@@ -3,7 +3,7 @@ const passport=require("passport");
 
 // Routes for Google OAuth 
 router.get('/login/google',function(req, res, next) { console.log('hi'); next(); },
-  passport.authenticate('google', { scope: ['profile','email'] }));
+  passport.authenticate('google', { scope: ['profile'] }));
 
 // Callback route for Google after Authentication 
 router.get('/login/google/callback', 
