@@ -24,7 +24,7 @@ router.get('/login/google/callback',
   passport.authenticate('twitter', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/');
+    res.redirect("/");
   });
 
 module.exports=router;
