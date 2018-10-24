@@ -2,6 +2,7 @@ const passport=require("passport");
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var keys=require("./keys/keys");
 var TwitterStrategy=require("passport-twitter");
+var LocalStrategy=require("passport-local");
 const User=require("../models/user");
 
 
@@ -45,6 +46,18 @@ function(token, tokenSecret, profile, cb) {
 
  
 }
+));
+
+// Local strategy
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      if (!user.verifyPassword(password)) { return done(null, false); }
+      return done(null, user);
+    });
+  }
 ));
 
 // Serialize and DeSerialize user for passport
