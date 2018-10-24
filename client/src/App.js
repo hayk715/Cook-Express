@@ -5,12 +5,28 @@ import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 import Home from "./pages/home";
 
+class Profile extends React.Component {
+    componentDidMount() {
+        fetch('/charliesroute').then(function(a1, a2, a3) {
+            console.log(a1, a2, a3);
+            return a1.json();
+        }).then(function(a1, a2, a3) {
+           console.log(a1, a2, a3);
+           debugger;
+       })
+    }
+    render() {
+        return <div>hi</div>;
+    }
+}
+
 const App = () => (
     <Router>
         <div>
             <Navbar />
             <Wrapper>
                 <Route exact path="/" component={Home} />
+                <Route exact path="/profile" component={Profile} />
             </Wrapper>
             <Footer />
         </div>

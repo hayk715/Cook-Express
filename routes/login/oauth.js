@@ -24,7 +24,18 @@ router.get('/login/google/callback',
   passport.authenticate('twitter', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect("/");
+    console.log('hello');
+
+    res.redirect("/profile");
   });
 
+
+  router.get('/charliesroute', function(req, res) {
+    debugger;
+    if (req.isAuthenticated()) {
+      return res.json({
+        username: 'hi'
+      })
+    }
+  })
 module.exports=router;

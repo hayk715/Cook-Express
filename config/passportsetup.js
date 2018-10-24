@@ -27,8 +27,7 @@ passport.use(new GoogleStrategy({
          
        })
 
-    
-       
+        
 
   }
 ));
@@ -57,9 +56,13 @@ function(token, tokenSecret, profile, cb) {
 // Serialize and DeSerialize user for passport
 
 passport.serializeUser(function(user, cb) {
+  console.log('hi from serialize');
+  console.log(user);
   cb(null, user);
 });
 
 passport.deserializeUser(function(obj, cb) {
+  console.log('hi from deserialize');
+  console.log(obj);
   cb(null, obj);
 });
