@@ -23,8 +23,8 @@ const SimpleNavbar = props => (
       <NavItem eventKey={2} href="#">
         Sign Up
       </NavItem>
-      <NavItem eventKey={3} href="#">
-        About
+      <NavItem eventKey={3} href="/about-us">
+      <Link to="/about-us">About</Link>
       </NavItem>
     </Nav>
   </Navbar.Collapse>
