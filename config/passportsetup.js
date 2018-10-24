@@ -3,6 +3,11 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var keys=require("./keys/keys");
 var TwitterStrategy=require("passport-twitter");
 const User=require("../models/user");
+const mongoose=require("mongoose");
+
+
+
+
 
 
 // Google Oauth 
@@ -12,16 +17,18 @@ passport.use(new GoogleStrategy({
     callbackURL: "/login/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    console.log(profile)
-       new User({
-         googleId:profile.id,
-         userName:profile.name.givenName,
-        //  email:profile.emails["0"].value   can add this but with emails parameters  in google router 
-        }).save().then((userInfo)=>{
-          console.log("you just saved this"+userInfo);
-          done(null,userInfo)
-          
-        })
+      new User({
+        googleId:profile.id,
+        userName:profile.name.givenName,
+       //  email:profile.emails["0"].value   can add this but with emails parameters  in google router 
+       }).save().then((userInfo)=>{
+         console.log("you just saved this"+userInfo);
+         done(null,userInfo)
+         
+       })
+
+    
+       
 
   }
 ));
