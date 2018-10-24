@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { Navbar, Nav, NavItem, ButtonToolbar,Button, NavDropdown, MenuItem } from "react-bootstrap";
+import { Navbar, Nav, NavItem, ButtonToolbar,Button,} from "react-bootstrap";
 
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
@@ -10,7 +10,7 @@ const SimpleNavbar = props => (
   
   <Navbar.Header>
     <Navbar.Brand>
-      <a href="#brand">Cook Express</a>
+      <a href="/">Cook Express</a>
     </Navbar.Brand>
     <Navbar.Toggle />
   </Navbar.Header>
@@ -29,8 +29,11 @@ const SimpleNavbar = props => (
       <NavItem eventKey={2} href="#">
         Sign Up
       </NavItem>
-      <NavItem eventKey={3} href="#">
+      <NavItem eventKey={3} href="/about">
         About
+      </NavItem>
+      <NavItem eventKey={4} href="/profile">
+        Profile
       </NavItem>
     </Nav>
   </Navbar.Collapse>

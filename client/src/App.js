@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 import Home from "./pages/home";
+import Profile from "./pages/profile";
+import About from "./pages/about";
 
 class Profile extends React.Component {
     componentDidMount() {
@@ -26,7 +28,10 @@ const App = () => (
             <Navbar />
             <Wrapper>
                 <Route exact path="/" component={Home} />
+
                 <Route exact path="/profile" component={Profile} />
+                <Route exact path="/about" component={About} />
+
             </Wrapper>
             <Footer />
         </div>
