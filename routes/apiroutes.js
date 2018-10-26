@@ -9,7 +9,8 @@ router.get("/recipes", (req, res) => {
     .header("X-Mashape-Key", "PmLhGIV6EbmshUTASHgOvs7KY0Jbp1LtMz0jsnYKJHJACqylp0")
     .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
     .end(function (result) {
-  console.log(result.status, result.headers, result.body);
+  console.log(result.body);
+      res.send(result.body);
 });
 })
 

@@ -7,6 +7,7 @@ import Search from "../components/Search";
 import {ButtonToolbar, Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import API from "../utils/API";
+import { RecipeList, RecipeListItem } from "../components/RecipeList";
 
 
 
@@ -27,15 +28,18 @@ class Home extends Component {
     HandleFormSubmit = event => {
         event.preventDefault();
         API.getRecipes(this.state.recipeSearch)
-            .then(res => this.setState({ recipes: res.data }))
-            .catch(err => console.log(err));
-    }
-    
-    
+        .then((res) => {
+            console.log(res)
+            console.log('hit')
+            this.setState({ recipes: res.data.results })
+        })
+        .catch(err => console.log(err));
+}
     
     
     
     render() {
+        console.log(this.state.recipes);
         return (
             <div>
                 <Food className="backgroundimg" backgroundImage="https://i.imgur.com/y59dVed.jpg">
@@ -58,8 +62,27 @@ class Home extends Component {
                         bsStyle="primary" >Search</Button>
                     </ButtonToolbar>
                 </div>
+                <Row>
+            <Col size="xs-12">
+              {!this.state.recipes.length ? (
+                <h1 className="text-center">No Recipes to Display</h1>
+              ) : (
+                <RecipeList>
+                  {this.state.recipes.map(recipe => {
+                    return (
+                      <RecipeListItem
+                        title={recipe.title}
+                        image={recipe.image}
+                        
+                      />
+                    );
+                  })}
+                </RecipeList>
+              )}
+            </Col>
+          </Row>
             </Food>
-         
+        
         </div>
         )
     }
