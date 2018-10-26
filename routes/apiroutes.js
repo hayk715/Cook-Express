@@ -12,6 +12,15 @@ router.get("/recipes", (req, res) => {
   console.log(result.body);
       res.send(result.body);
 });
+
+
+unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${req.query.id}/information`)
+.header("X-Mashape-Key", "PmLhGIV6EbmshUTASHgOvs7KY0Jbp1LtMz0jsnYKJHJACqylp0")
+.header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+.end(function (result) {
+  console.log(result.body);
+  res.send(result.body);
+});
 })
 
 module.exports = router;

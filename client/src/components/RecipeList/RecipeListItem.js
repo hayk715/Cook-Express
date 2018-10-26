@@ -12,7 +12,7 @@ export const RecipeListItem = props => (
         </Col>
         <Col size="xs-8 sm-9">
           <h3>{props.title}</h3>
-          <a rel="noreferrer noopener" target="_blank" href={props.href}>
+          <a rel="noreferrer noopener" target="_blank" href={props.id}>
             Show recipe!
           </a>
         </Col>
