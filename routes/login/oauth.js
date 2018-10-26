@@ -1,6 +1,8 @@
 const router=require('express').Router();
 const passport=require("passport");
 
+
+
 // Routes for Google OAuth 
 router.get('/login/google',function(req, res, next) { console.log('hi'); next(); },
   passport.authenticate('google', { scope: ['profile'] }));
