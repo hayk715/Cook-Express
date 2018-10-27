@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 const keys=require("./config/keys/keys");
 const bodyParser=require("body-parser");
 const passport=require("passport");
+const apiRoutes = require("./routes/apiRoutes")
 
 // body-parser middleware 
 
@@ -52,7 +53,7 @@ if (process.env.NODE_ENV === "production") {
 }
 // Bring in all of the routes from the routes folder r
 
-app.use(routes)
+app.use("/api", apiRoutes)
 
 // This 
 app.get("*", (req, res) => {
