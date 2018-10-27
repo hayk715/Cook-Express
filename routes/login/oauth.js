@@ -1,6 +1,8 @@
 const router=require('express').Router();
 const passport=require("passport");
 
+
+
 // Routes for Google OAuth 
 router.get('/login/google',function(req, res, next) { console.log('hi'); next(); },
   passport.authenticate('google', { scope: ['profile'] }));
@@ -10,9 +12,9 @@ router.get('/login/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
       if (process.env.NODE_ENV === 'production') {
-        res.redirect('/');
+        res.redirect('/profile/logged');
       } else {
-          res.redirect('http://localhost:3000/');
+          res.redirect('http://localhost:3000/profile/logged');
       }
   });
 
@@ -38,4 +40,7 @@ router.get('/login/google/callback',
       })
     }
   })
+
+ 
+
 module.exports=router;
