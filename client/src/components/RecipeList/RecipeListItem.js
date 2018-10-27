@@ -10,6 +10,7 @@ class RecipeListItem extends React.Component{
   constructor(props) {
     super(props);
     this.showRecipe = this.showRecipe.bind(this);
+    
   }
   state = {
     loading: false,
