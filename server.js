@@ -53,7 +53,7 @@ if (process.env.NODE_ENV === "production") {
 }
 // Bring in all of the routes from the routes folder r
 
-app.use("/api", apiRoutes)
+app.use(routes)
 
 // This 
 app.get("*", (req, res) => {

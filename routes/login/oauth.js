@@ -11,10 +11,11 @@ router.get('/login/google',function(req, res, next) { console.log('hi'); next();
 router.get('/login/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
+      // res.send(req.user.id)
       if (process.env.NODE_ENV === 'production') {
         res.redirect('/profile/logged');
       } else {
-          res.redirect('http://localhost:3000/profile/logged');
+          res.redirect('http://localhost:3000/profile/logged');  
       }
   });
 
@@ -32,12 +33,14 @@ router.get('/login/google/callback',
   });
 
 
-  router.get('/charliesroute', function(req, res) {
-    debugger;
+  router.get('/loggedin', function(req, res) {
+    // debugger;
     if (req.isAuthenticated()) {
-      return res.json({
-        username: 'hi'
-      })
+      var userData={
+        name:req.user.username,
+        id:req.user.id
+      }
+      return res.json(userData);
     }
   })
 

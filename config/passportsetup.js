@@ -20,22 +20,23 @@ passport.use(new GoogleStrategy({
     callbackURL: "/login/google/callback"
   },
   function(accessToken, refreshToken, profile, done)  {
+    console.log(profile)
     var id=profile.id
     User.findOne({googleId:id}).then(function(a1) {
       console.log("twitter id from database"+a1)
-      if(a1.googleId==id)
+      if(a1&&a1.googleId==id)
       {
         console.log("it works");
-        done(null)
+        done(null,id)
       }
       else{
         new User({
           googleId:profile.id,
-          userName:profile.name.givenName,
+          username:profile.name.givenName,
          //  email:profile.emails["0"].value   can add this but with emails parameters  in google router 
          }).save().then((userInfo)=>{
          console.log("you just saved this"+userInfo);
-         cb(null,userInfo)
+         done(null,userInfo)
          })
         }
      })
@@ -51,19 +52,18 @@ function(token, tokenSecret, profile, cb) {
     var id=profile._json.id
     User.findOne({twitterId:id}).then(function(a1) {
       console.log("twitter id from database"+a1)
-      if(a1.twitterId==id)
+      if(a1 && a1.twitterId==id)
         {
-        console.log("it works");
-        cb(null)
+        cb(null,id)
        }
       else{
         new User({
           twitterId:profile._json.id,
-          userName:profile.screen_name, 
+          username:profile._json.name, 
           email:profile.email
          }).save().then((userInfo)=>{
-           console.log("you just saved this"+userInfo);
-           cb(null,userInfo)
+           console.log("this is the cb data"+userInfo.twitterId)
+           cb(null,userInfo.twitterId)
            })
           }
        })
@@ -73,13 +73,16 @@ function(token, tokenSecret, profile, cb) {
 // Serialize and DeSerialize user for passport
 
 passport.serializeUser(function(user, cb) {
-  console.log('hi from serialize');
-  console.log(database.findOne({userName:"Guru"}));
+  console.log("This is serialize "+user)
+ 
   cb(null, user);
 });
 
-passport.deserializeUser(function(obj, cb) {
-  console.log('hi from deserialize');
+passport.deserializeUser(function(user, cb) {
+  // User.findById(user.id) || 
+  User.findOne({twitterId:user}).then((userdb)=>{
+    cb(null,userdb);
+    console.log(userdb)
+  })
   
-  cb(null, obj);
 });
