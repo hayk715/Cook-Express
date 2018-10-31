@@ -30,10 +30,9 @@ const SimpleNavbar = props => (
         Sign Up
       </NavItem>
 
-      <NavItem eventKey={3} href="/about-us">
       <NavItem eventKey={3} href="/about">
         About
-      </NavItem>
+
       </NavItem>
       <NavItem eventKey={4} href="/profile">
         Profile
