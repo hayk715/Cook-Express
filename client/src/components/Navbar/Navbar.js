@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { Navbar, Nav, NavItem, ButtonToolbar,Button,} from "react-bootstrap";
+import { Navbar, Nav, NavItem, ButtonToolbar,Button,SplitButton,MenuItem} from "react-bootstrap";
+import "../Modal/signIn"
+import SignIn from "../Modal/signIn";
 
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
@@ -15,20 +16,11 @@ const SimpleNavbar = props => (
     <Navbar.Toggle />
   </Navbar.Header>
   <Navbar.Collapse>
-    <Nav>
-    </Nav>
     <Nav pullRight>
-    <ButtonToolbar>
-        <Button href="/login/twitter" bsStyle="info" bsSize="xsmall" active>
-          Twitter
-         </Button>
-         <Button href="/login/google" bsStyle="info" bsSize="xsmall" active>
-          Google
-         </Button>
-      </ButtonToolbar>
-      <NavItem eventKey={2} href="#">
-        Sign Up
+    <SignIn/>
+      <NavItem eventKey={2} href="#">   
       </NavItem>
+<<<<<<< HEAD
 
       <NavItem eventKey={3} href="/about">
         About
@@ -36,6 +28,10 @@ const SimpleNavbar = props => (
       </NavItem>
       <NavItem eventKey={4} href="/profile">
         Profile
+=======
+      <NavItem eventKey={3} href="/about-us">
+      <Link to="/about-us">About</Link>
+>>>>>>> ca42e5f798ca624cd50c945ebc2ca428fd2ae5ee
       </NavItem>
     </Nav>
   </Navbar.Collapse>
