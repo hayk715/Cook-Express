@@ -58,13 +58,9 @@ class Profile extends React.Component {
             </Nav>
             </Navbar.Collapse>
   </Navbar>
-  {/*This is where the search box goes */}
   <Home>
-
   </Home>
         </div>;
     }
 }
-
-
 export default Profile;

@@ -1,2 +1,3 @@
 export * from "./RecipeList";
-export * from "./RecipeListItem";
+
+export {RecipeListItem} from "./RecipeListItem";

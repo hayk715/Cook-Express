@@ -46,7 +46,6 @@ class Home extends Component {
                     <div className='headings'>
                     <h1>Cook Express</h1>
                     <h2>What's Cookin</h2>
-                    <Link to="/about-us">About us link here!!!!!</Link>
                     </div>
     
                 <div className="search">
@@ -72,6 +71,8 @@ class Home extends Component {
                     return (
                       <RecipeListItem
                         title={recipe.title}
+                        id={recipe.id}
+                        key={recipe.title + recipe.id}
                         image={recipe.image}
                         
                       />

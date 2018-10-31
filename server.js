@@ -52,7 +52,11 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("/client/build"));
 }
 // Bring in all of the routes from the routes folder r
+<<<<<<< HEAD
 
+=======
+app.use("/api",apiRoutes);
+>>>>>>> 2014cc9b940261564fa1084b40a9ea834835503a
 app.use(routes)
 
 // This 
