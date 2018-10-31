@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import Food from "../components/Food";
-import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
 import Search from "../components/Search";
 import {ButtonToolbar, Button} from "react-bootstrap";
-import {Link} from "react-router-dom";
 import API from "../utils/API";
 import { RecipeList, RecipeListItem } from "../components/RecipeList";
 
