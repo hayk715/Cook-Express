@@ -5,6 +5,7 @@ import "../Modal/signIn"
 import SignIn from "../Modal/signIn";
 
 
+
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 const SimpleNavbar = props => (
 <Navbar inverse collapseOnSelect>
@@ -21,7 +22,6 @@ const SimpleNavbar = props => (
       <NavItem eventKey={2} href="#">   
       </NavItem>
       <NavItem eventKey={3} href="/about-us">
-      <Link to="/about-us">About</Link>
       </NavItem>
     </Nav>
   </Navbar.Collapse>
