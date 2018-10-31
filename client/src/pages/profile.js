@@ -7,6 +7,12 @@ import { Navbar, Nav, NavItem, ButtonToolbar,SplitButton,MenuItem} from "react-b
 import Search from "../components/Search";
 import Home from "./home"
 import { RecipeList, RecipeListItem } from "../components/RecipeList";
+
+function logout(){
+    window.location.href="/logout"
+;}
+
+
 class Profile extends React.Component {
     constructor(){
         super();
@@ -45,7 +51,7 @@ class Profile extends React.Component {
                     >
                         <MenuItem eventKey="1">View Starred</MenuItem>
                         <MenuItem divider />
-                        <MenuItem eventKey="4">Sign Out</MenuItem>
+                        <MenuItem onClick={logout} eventKey="4">Sign Out</MenuItem>
                     </SplitButton>
             </ButtonToolbar>
             </NavItem>
