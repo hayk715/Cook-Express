@@ -45,7 +45,8 @@ class RecipeListItem extends React.Component{
         {this.state.recipeData.instructions}
         <h4>Ingredients: </h4>
         {this.state.recipeData.extendedIngredients.map((ingredient) => {
-          return <p>{ingredient.original}</p>
+          return <p 
+            key={ingredient.name + ingredient.id}>{ingredient.original}</p>
         })}
         
       </div>

@@ -72,6 +72,7 @@ class Home extends Component {
                       <RecipeListItem
                         title={recipe.title}
                         id={recipe.id}
+                        key={recipe.title + recipe.id}
                         image={recipe.image}
                         
                       />
