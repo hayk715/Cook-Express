@@ -17,48 +17,12 @@ const SimpleNavbar = props => (
     <Navbar.Toggle />
   </Navbar.Header>
   <Navbar.Collapse>
-    <Nav PullLeft>
-    <NavItem>
-    <ButtonToolbar>
-    <SplitButton
-      bsSize="small"
-      title={props.name}
-      id="dropdown-size-small"
-      bsStyle="danger"
-    >
-      <MenuItem eventKey="1">View Starred</MenuItem>
-      <MenuItem divider />
-      <MenuItem eventKey="4">Sign Out</MenuItem>
-    </SplitButton>
-  </ButtonToolbar>
-    
-      </NavItem>
-    </Nav>
     <Nav pullRight>
-      <NavItem eventKey={2} href="#">
-      <SignIn/>
-        
+    <SignIn/>
+      <NavItem eventKey={2} href="#">   
       </NavItem>
-      <ButtonToolbar >
-            <Button href="/login/twitter" bsStyle="info" bsSize="xsmall" active>
-                         Twitter
-             </Button>
-             <a href="/login/twitter">Twitter link</a>
-                <Button href="/login/google" bsStyle="info" bsSize="xsmall" active>
-                     Google
-                 </Button>
-
-            </ButtonToolbar>
-
       <NavItem eventKey={3} href="/about-us">
       <Link to="/about-us">About</Link>
-
-      <NavItem eventKey={3} href="/about">
-        About
-      </NavItem>
-      </NavItem>
-      <NavItem eventKey={4} href="/profile">
-        Profile
       </NavItem>
     </Nav>
   </Navbar.Collapse>

@@ -39,14 +39,13 @@ class SignIn extends React.Component {
   
           <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>Sign Up</Modal.Title>
+              <Modal.Title>Sign In</Modal.Title>
             </Modal.Header>
             <Modal.Body>
             <ButtonToolbar >
             <Button href="/login/twitter" bsStyle="info" bsSize="xsmall" active>
                          Twitter
              </Button>
-             <a href="/login/twitter">Twitter link</a>
                 <Button href="/login/google" bsStyle="info" bsSize="xsmall" active>
                      Google
                  </Button>

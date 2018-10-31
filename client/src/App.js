@@ -16,11 +16,13 @@ const App = () => (
     <Router>
         <div>
             <Route exact path="/profile" component={Profile} />
+            <Navbar/>
             <Wrapper>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/about-us" component={About} />
                 <Route exact path="/about" component={About} />
             </Wrapper>
+           
             <Footer />
         </div>
     </Router>
