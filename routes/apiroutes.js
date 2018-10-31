@@ -15,4 +15,16 @@ router.get("/recipes", (req, res) => {
 })
 
 
+router.get("/recipes/:id", (req, res) => {
+  console.log(req.params)
+  unirest
+    .get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${req.params.id}/information`)
+    .header("X-Mashape-Key", keys.food.foodkey)
+    .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+    .end(function (result) {
+  console.log(result.body);
+      res.send(result.body);
+});
+})
+
 module.exports = router;
