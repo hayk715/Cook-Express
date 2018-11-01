@@ -2,6 +2,7 @@ import React from "react";
 import Thumbnail from "../Thumbnail";
 import { Container, Row, Col } from "../Grid";
 import axios from "axios";
+import FaveButt from "../FaveButt/FaveButt";
 
 // RecipeListItem renders a bootstrap list item containing data from the recipe api call
 
@@ -60,6 +61,7 @@ class RecipeListItem extends React.Component{
           <Row>
             <Col size="xs-4 sm-2">
               <Thumbnail src={props.image || "https://placehold.it/300x300"} />
+              <FaveButt />
             </Col>
             <Col size="xs-8 sm-9">
               <h3>{props.title}</h3>
