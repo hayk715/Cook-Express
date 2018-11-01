@@ -1,12 +1,6 @@
 import React from "react";
-import Container from "../components/Container";
-import Row from "../components/Row";
-import Col from "../components/Col";
-import { throws } from "assert";
 import { Navbar, Nav, NavItem, ButtonToolbar,SplitButton,MenuItem} from "react-bootstrap";
-import Search from "../components/Search";
 import Home from "./home"
-import { RecipeList, RecipeListItem } from "../components/RecipeList";
 
 function logout(){
     window.location.href="/logout"
