@@ -3,6 +3,7 @@ import Thumbnail from "../Thumbnail";
 import { Container, Row, Col } from "../Grid";
 import axios from "axios";
 import "./RecipeStyle.css"
+import FaveButt from "../FaveButt/FaveButt";
 
 // RecipeListItem renders a bootstrap list item containing data from the recipe api call
 
@@ -72,11 +73,12 @@ class RecipeListItem extends React.Component{
       <li className="list-group-item">
         <Container>
           <Row>
-            <h3 className="foodtitle text-center">{props.title}</h3>
+            <h2 className="foodtitle text-center">{props.title}</h2>
           </Row>
           <Row>
             <Col size="sm-2">
               <Thumbnail src={props.image || "https://placehold.it/300x300"} />
+              <FaveButt onClick={this.addFave}/>
             </Col>
             <Col size="sm-9" className="recipelink">
               {this.renderShowRecipe()}
