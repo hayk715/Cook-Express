@@ -13,11 +13,15 @@ import Profile from "./pages/profile";
 const App = () => (
     <Router>
         <div>
-            <Navbar/>
-            <Wrapper>
-                <Route exact path="/" component={Home} />
-            </Wrapper>
-            <Route exact path="/profile" component={Profile} />
+
+        <Route component={Profile} >
+            <Route exact path="/profile"/>
+        </Route>
+       
+            {/* <Route component={Home}>
+                <Route exact path="/about-us" component={About} />
+            </Route> */}
+
             <Footer />
         </div>
     </Router>

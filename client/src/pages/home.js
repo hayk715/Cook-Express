@@ -6,6 +6,7 @@ import Search from "../components/Search";
 import {ButtonToolbar, Button} from "react-bootstrap";
 import API from "../utils/API";
 import { RecipeList, RecipeListItem } from "../components/RecipeList";
+import Navbar from "../components/Navbar";
 
 
 
