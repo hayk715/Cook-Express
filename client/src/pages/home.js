@@ -41,7 +41,7 @@ class Home extends Component {
         return (
             <div>
                 <Food className="backgroundimg" backgroundImage="https://i.imgur.com/y59dVed.jpg">
-                    <div className='headings'>
+                    <div className='headings text-center'>
                     <h1>Cook Express</h1>
                     <h2>What's Cookin</h2>
                     </div>
