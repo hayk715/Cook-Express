@@ -8,6 +8,7 @@ import {ButtonToolbar, Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import API from "../utils/API";
 import { RecipeList, RecipeListItem } from "../components/RecipeList";
+import Navbar from "../components/Navbar";
 
 
 
