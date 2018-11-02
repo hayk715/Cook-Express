@@ -30,6 +30,13 @@ class RecipeListItem extends React.Component{
     })
   }
 
+  addFave(evt) {
+    evt.preventDefault();
+    const id = this.props.id;
+    axios.post('/auth/profile/:userId', id)
+
+  }
+
   renderShowRecipe() {
     if (this.state.loading) {
       return <p>Loading...</p>
@@ -43,28 +50,35 @@ class RecipeListItem extends React.Component{
 
     return (
       <div>
+        <Col size="sm-6">
+        <h4>Intructions:</h4>
         {this.state.recipeData.instructions}
+        </Col>
+        <Col size="sm-4">
         <h4>Ingredients: </h4>
         {this.state.recipeData.extendedIngredients.map((ingredient) => {
           return <p 
             key={ingredient.name + ingredient.id}>{ingredient.original}</p>
         })}
-        
+        </Col>
       </div>
     )
   }
+
   render() {
     const props=this.props
     return (
       <li className="list-group-item">
         <Container>
           <Row>
-            <Col size="xs-4 sm-2">
+            <h2>{props.title}</h2>
+          </Row>
+          <Row>
+            <Col size="sm-2">
               <Thumbnail src={props.image || "https://placehold.it/300x300"} />
-              <FaveButt />
+              <FaveButt onClick={this.addFave}/>
             </Col>
-            <Col size="xs-8 sm-9">
-              <h3>{props.title}</h3>
+            <Col size="sm-9">
               {this.renderShowRecipe()}
               
             </Col>
