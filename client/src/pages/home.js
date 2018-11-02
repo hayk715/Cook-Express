@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import Food from "../components/Food";
-import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
 import Search from "../components/Search";
 import {ButtonToolbar, Button} from "react-bootstrap";
-import {Link} from "react-router-dom";
 import API from "../utils/API";
 import { RecipeList, RecipeListItem } from "../components/RecipeList";
 import Navbar from "../components/Navbar";
@@ -44,7 +42,7 @@ class Home extends Component {
         return (
             <div>
                 <Food className="backgroundimg" backgroundImage="https://i.imgur.com/y59dVed.jpg">
-                    <div className='headings'>
+                    <div className='headings text-center'>
                     <h1>Cook Express</h1>
                     <h2>What's Cookin</h2>
                     </div>
@@ -65,7 +63,7 @@ class Home extends Component {
                 <Row>
             <Col size="xs-12">
               {!this.state.recipes.length ? (
-                <h1 className="text-center">No Recipes to Display</h1>
+                <p className="text-center">Search for recipe</p>
               ) : (
                 <RecipeList>
                   {this.state.recipes.map(recipe => {

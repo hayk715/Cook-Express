@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { Navbar, Nav, NavItem, ButtonToolbar,Button,SplitButton,MenuItem} from "react-bootstrap";
+import { Navbar, Nav, NavItem } from "react-bootstrap";
 import "../Modal/signIn"
 import SignIn from "../Modal/signIn";
 import LoginButtons from "../Buttons/button"
+
 
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
@@ -44,7 +44,10 @@ render(){
     </Navbar.Header>
     <Navbar.Collapse>
     <Nav pullRight>
+
     {signOrLogin}
+
+    
     </Nav>
     </Navbar.Collapse>
   </Navbar>

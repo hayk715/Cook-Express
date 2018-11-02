@@ -5,7 +5,6 @@ import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 import Home from "./pages/home";
 
-import About from "./pages/about";
 import Profile from "./pages/profile";
 
 
@@ -14,6 +13,7 @@ import Profile from "./pages/profile";
 const App = () => (
     <Router>
         <div>
+
         <Route component={Profile} >
             <Route exact path="/profile"/>
         </Route>
@@ -21,6 +21,7 @@ const App = () => (
             {/* <Route component={Home}>
                 <Route exact path="/about-us" component={About} />
             </Route> */}
+
             <Footer />
         </div>
     </Router>

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Modal,Button,ButtonToolbar,Popover,Tooltip,OverlayTrigger} from 'react-bootstrap';
+import {Modal,Button,ButtonToolbar,Popover,Tooltip} from 'react-bootstrap';
 import "../Buttons/button"
 
 
@@ -33,9 +33,8 @@ class SignIn extends React.Component {
   
       return (
         <div>
-          <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>
-          Sign In
-          </Button>
+          
+          <a><p onClick={this.handleShow}>Sign in</p></a>
   
           <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>
