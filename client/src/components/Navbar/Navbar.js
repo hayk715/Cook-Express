@@ -21,21 +21,7 @@ const SimpleNavbar = props => (
     <SignIn/>
       <NavItem eventKey={2} href="#">   
       </NavItem>
-<<<<<<< HEAD
-
-      <NavItem eventKey={3} href="/about">
-        About
-
-      </NavItem>
-      <NavItem eventKey={4} href="/profile">
-        Profile
-=======
       <NavItem eventKey={3} href="/about-us">
-<<<<<<< HEAD
-      <Link to="/about-us">About</Link>
->>>>>>> ca42e5f798ca624cd50c945ebc2ca428fd2ae5ee
-=======
->>>>>>> 39983757b9dddf57472b0c25b6f5dc0e9ea144b0
       </NavItem>
     </Nav>
   </Navbar.Collapse>

@@ -2,6 +2,7 @@ import React from "react";
 import Thumbnail from "../Thumbnail";
 import { Container, Row, Col } from "../Grid";
 import axios from "axios";
+import "./RecipeStyle.css"
 
 // RecipeListItem renders a bootstrap list item containing data from the recipe api call
 
@@ -29,42 +30,56 @@ class RecipeListItem extends React.Component{
     })
   }
 
+  addFave(evt) {
+    evt.preventDefault();
+    const id = this.props.id;
+    axios.post('/auth/profile/:userId', id)
+
+  }
+
   renderShowRecipe() {
     if (this.state.loading) {
       return <p>Loading...</p>
     }
 
     if (this.state.recipeData === null) {
-      return <a rel="noreferrer noopener" href='javascript:;' target="_blank" onClick={this.showRecipe}>
+      return <a rel="noreferrer noopener" className="recipelink" href='javascript:;' target="_blank" onClick={this.showRecipe}>
             Show recipe!
           </a>
     } 
 
     return (
       <div>
+        <Col size="sm-6">
+        <h4>Intructions:</h4>
         {this.state.recipeData.instructions}
+        </Col>
+        <Col className="ingredients" size="sm-6">
         <h4>Ingredients: </h4>
-        {this.state.recipeData.extendedIngredients.map((ingredient) => {
+          {this.state.recipeData.extendedIngredients.map((ingredient) => {
           return <p 
-            key={ingredient.name + ingredient.id}>{ingredient.original}</p>
+            key={ingredient.name + ingredient.id}>
+            <li>{ingredient.original}</li></p>
         })}
-        
+        </Col>
       </div>
     )
   }
+
   render() {
     const props=this.props
     return (
       <li className="list-group-item">
         <Container>
           <Row>
-            <Col size="xs-4 sm-2">
+            <h3 className="foodtitle text-center">{props.title}</h3>
+          </Row>
+          <Row>
+            <Col size="sm-2">
               <Thumbnail src={props.image || "https://placehold.it/300x300"} />
             </Col>
-            <Col size="xs-8 sm-9">
-              <h3>{props.title}</h3>
+            <Col size="sm-9" className="recipelink">
               {this.renderShowRecipe()}
-              
             </Col>
           </Row>
         </Container>
