@@ -64,7 +64,7 @@ class RecipeListItem extends React.Component{
         </Col>
         <Col size="sm-6">
         <h4>Instructions:</h4>
-        {this.state.recipeInstructions.map((instruction, i) => {
+        {this.state.recipeInstructions.map((instruction) => {
           return <p key={instruction.number}>
             <li>{instruction.step}</li>
           </p>
