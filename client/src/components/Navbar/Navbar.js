@@ -1,47 +1,60 @@
 import React from "react";
 import "./Navbar.css";
-import { Navbar, Nav, NavItem, ButtonToolbar,Button,} from "react-bootstrap";
+import { Navbar, Nav, NavItem } from "react-bootstrap";
+import "../Modal/signIn"
+import SignIn from "../Modal/signIn";
+import LoginButtons from "../Buttons/button"
+import "./Navbar.css"
+
 
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
-const SimpleNavbar = props => (
-<Navbar inverse collapseOnSelect>
+class SimpleNavbar extends React.Component{
+  constructor(props){
+    super(props);
+    this.handleLoggedin = this.handleLoggedin.bind(this);
+    this.handleSignin = this.handleSignin.bind(this);
+    this.state = {isLoggedIn: false};
+}
+handleLoggedin(){
+  this.setState({isLoggedIn:true})
+}
+handleSignin(){
+  this.setState({isLoggedIn:false})
+}
+render(){
+  let signOrLogin;
   
-  <Navbar.Header>
-    <Navbar.Brand>
-      <a href="/">Cook Express</a>
-    </Navbar.Brand>
-    <Navbar.Toggle />
-  </Navbar.Header>
-  <Navbar.Collapse>
-    <Nav>
-    </Nav>
+  if (!this.props.hasId){
+    signOrLogin=<SignIn/>
+  }
+  else
+  {
+    signOrLogin=<LoginButtons 
+    id ={this.props.loginId} 
+    name={this.props.loginName} 
+    click={this.props.loginClick}/>
+  }
+  return(
+  <Navbar  isLoggedIn={false} inverse collapseOnSelect>
+    <Navbar.Header>
+      <Navbar.Brand>
+        <a href="/">Cook Express</a>
+      </Navbar.Brand>
+      <Navbar.Toggle />
+    </Navbar.Header>
+    <Navbar.Collapse>
     <Nav pullRight>
-    <ButtonToolbar>
-        <Button href="/login/twitter" bsStyle="info" bsSize="xsmall" active>
-          Twitter
-         </Button>
-         <Button href="/login/google" bsStyle="info" bsSize="xsmall" active>
-          Google
-         </Button>
-      </ButtonToolbar>
-      <NavItem eventKey={2} href="#">
-        Sign Up
-      </NavItem>
 
-      <NavItem eventKey={3} href="/about-us">
-      <NavItem eventKey={3} href="/about">
-        About
-      </NavItem>
-      </NavItem>
-      <NavItem eventKey={4} href="/profile">
-        Profile
-      </NavItem>
+    {signOrLogin}
+
+    
     </Nav>
-  </Navbar.Collapse>
-</Navbar>
+    </Navbar.Collapse>
+  </Navbar>
+  
+  )}
 
-
-  );
+};
   
   export default SimpleNavbar;

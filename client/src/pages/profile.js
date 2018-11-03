@@ -1,59 +1,38 @@
 import React from "react";
-import Container from "../components/Container";
-import Row from "../components/Row";
-import Col from "../components/Col";
-import { throws } from "assert";
-import { Navbar, Nav, NavItem, ButtonToolbar,SplitButton,MenuItem} from "react-bootstrap";
-import Search from "../components/Search";
+
 import Home from "./home"
-import { RecipeList, RecipeListItem } from "../components/RecipeList";
+import Navbar from "../components/Navbar";
+import LoginButtons from "../components/Buttons/button"
+function logout(){
+   fetch("/logout").then(function(){window.location.href="/"})
+}
+       
+
+
 class Profile extends React.Component {
     constructor(){
         super();
         this.state={
            name:"",
-           id:""
+           id:"",
+           logged:false
         }
     }
     componentDidMount() {
         fetch('/loggedin')
             .then((res) => res.json())
             .then((user) => {
-              return(this.setState({name:user.name,id:user.id}))
+              return(this.setState({name:user.name,id:user.id,logged:true}))
             })
     }
     render() {
         return <div>
-            
-<Navbar inverse collapseOnSelect>
-     <Navbar.Header>
-        <Navbar.Brand>
-             <a href="/">Cook Express</a>
-        </Navbar.Brand>
-        <Navbar.Toggle />
-        </Navbar.Header>
-            <Navbar.Collapse>
-                <Nav pullRight>
-                <NavItem>
-                <ButtonToolbar>
-                    <SplitButton 
-                        bsSize="small"
-                        title={this.state.name}
-                        id="dropdown-size-small"
-                        bsStyle="danger"
-                        href="/profile"
-                    >
-                        <MenuItem eventKey="1">View Starred</MenuItem>
-                        <MenuItem divider />
-                        <MenuItem eventKey="4">Sign Out</MenuItem>
-                    </SplitButton>
-            </ButtonToolbar>
-            </NavItem>
-            </Nav>
-            </Navbar.Collapse>
-  </Navbar>
-  <Home>
-  </Home>
+            <Navbar isLoggedIn={true} hasId={this.state.id ? this.state.id : null} loginName={this.state.name} loginClick={logout}>
+             <LoginButtons id ={this.state.id} name={this.state.name} />
+             </Navbar>
+                
+           
+            <Home/>
         </div>;
     }
 }

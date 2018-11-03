@@ -2,6 +2,8 @@ import React from "react";
 import Thumbnail from "../Thumbnail";
 import { Container, Row, Col } from "../Grid";
 import axios from "axios";
+import "./RecipeStyle.css"
+import FaveButt from "../FaveButt/FaveButt";
 
 // RecipeListItem renders a bootstrap list item containing data from the recipe api call
 
@@ -14,19 +16,29 @@ class RecipeListItem extends React.Component{
   }
   state = {
     loading: false,
-    recipeData: null
+    recipeInstructions: null,
+    recipeIngredients: null,
   }
+
 
   showRecipe(evt) {
     evt.preventDefault();
     this.setState({loading: true}, () => {
       axios.get(`/api/recipes/${this.props.id}`)
       .then(resp => {
-        this.setState({recipeData: resp.data, loading: false})
+        console.log('we are here', resp.data.analyzedInstructions[0].steps)
+        this.setState({recipeInstructions: resp.data.analyzedInstructions[0].steps, loading: false, recipeIngredients: resp.data.extendedIngredients})
       }).catch(err => {
         alert(err);
       })
     })
+  }
+
+  addFave(evt) {
+    evt.preventDefault();
+    const id = this.props.id;
+    axios.post('/auth/profile/:userId', id)
+
   }
 
   renderShowRecipe() {
@@ -34,37 +46,51 @@ class RecipeListItem extends React.Component{
       return <p>Loading...</p>
     }
 
-    if (this.state.recipeData === null) {
-      return <a rel="noreferrer noopener" href='javascript:;' target="_blank" onClick={this.showRecipe}>
+    if (this.state.recipeInstructions === null) {
+      return <a rel="noreferrer noopener" className="recipelink" href='javascript:;' target="_blank" onClick={this.showRecipe}>
             Show recipe!
           </a>
     } 
-
+    // return ('hello')
     return (
       <div>
-        {this.state.recipeData.instructions}
+        <Col className="ingredients" size="sm-6">
         <h4>Ingredients: </h4>
-        {this.state.recipeData.extendedIngredients.map((ingredient) => {
+          {this.state.recipeIngredients.map((ingredient) => {
           return <p 
-            key={ingredient.name + ingredient.id}>{ingredient.original}</p>
+            key={ingredient.id}>
+            <li>{ingredient.original}</li></p>
         })}
+        </Col>
+        <Col size="sm-6">
+        <h4>Instructions:</h4>
+        {this.state.recipeInstructions.map((instruction) => {
+          return <p key={instruction.number}>
+            <li>{instruction.step}</li>
+          </p>
+        })}
+        </Col>
         
       </div>
     )
   }
+
   render() {
-    const props=this.props
+    const props=this.props;
+    console.log(this.state.recipeInstructions);
     return (
       <li className="list-group-item">
         <Container>
           <Row>
-            <Col size="xs-4 sm-2">
+            <h2 className="foodtitle text-center">{props.title}</h2>
+          </Row>
+          <Row>
+            <Col size="sm-2">
               <Thumbnail src={props.image || "https://placehold.it/300x300"} />
+              <FaveButt onClick={this.addFave}/>
             </Col>
-            <Col size="xs-8 sm-9">
-              <h3>{props.title}</h3>
+            <Col size="sm-9" className="recipelink">
               {this.renderShowRecipe()}
-              
             </Col>
           </Row>
         </Container>

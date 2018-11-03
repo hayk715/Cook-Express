@@ -1,5 +1,6 @@
 const router=require('express').Router();
 const passport=require("passport");
+
 // Routes for Google OAuth 
 router.get('/login/google',function(req, res, next) { console.log('hi'); next(); },
   passport.authenticate('google', { scope: ['profile'] }));
@@ -16,6 +17,7 @@ router.get('/login/google/callback',
   });
   // Route for Twitter OAuth
   router.get("/login/twitter", passport.authenticate("twitter"));
+
   // Callback Route for Twitter after Authentication
   router.get('/login/twitter/callback', 
   passport.authenticate('twitter', { failureRedirect: '/login' }),
@@ -24,8 +26,18 @@ router.get('/login/google/callback',
     console.log('hello');
     res.redirect("/profile");
   });
+
+  router.get("/profile", ()=>{
+      if(req.isAuthenticated()){
+        return res.render("/profile")
+      }
+      else {
+        res.render("You are not logged in")
+      }
+  })
+
   router.get('/loggedin', function(req, res) {
-    // debugger;
+
     if (req.isAuthenticated()) {
       var userData={
         name:req.user.username,
@@ -34,5 +46,19 @@ router.get('/login/google/callback',
       return res.json(userData);
     }
   })
+
+  // Log Out 
+  console.log('hello dude');
+  // router.get('/logout', function(req, res){
+  //   console.log("logged out");
+  //   req.logout();
+  //   res.redirect('/');
+  // });
+  router.get('/logout', function(req, res) {
+    console.log('logged out');
+    req.logout();
+    res.redirect("/")
+  });
+  console.log('bye dude');
  
 module.exports=router;

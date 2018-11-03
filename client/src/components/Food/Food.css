@@ -7,6 +7,7 @@
     background-position: center;
     position: relative;
     overflow: auto;
+    margin-top: -20px;
     
 }
 
@@ -42,11 +43,22 @@
 }
 
 .search {
-    margin-left: 40.5%;
+    margin-left: 85px;
 }
 
 .search Button {
-    margin-left: 25% !important;
-    margin-top: -4%;
-    padding: 1.1%;
+    padding: 3%;
+    /* margin-left: 14vw !important; */
+    /* float: right !important; */
+    margin-top: -45px; 
+    margin-left: 275px !important;
+    
 }
+
+.wholething{
+    margin: auto;
+    width: 500px;
+    margin-top: 200px;
+    flex-direction: row !important;
+}
+
