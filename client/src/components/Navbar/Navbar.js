@@ -4,6 +4,7 @@ import { Navbar, Nav, NavItem } from "react-bootstrap";
 import "../Modal/signIn"
 import SignIn from "../Modal/signIn";
 import LoginButtons from "../Buttons/button"
+import "./Navbar.css"
 
 
 
