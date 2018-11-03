@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 const keys=require("./config/keys/keys");
 const bodyParser=require("body-parser");
 const passport=require("passport");
+const apiRoutes = require("./routes/apiRoutes")
 
 // body-parser middleware 
 
@@ -29,6 +30,7 @@ app.use(express.json());
 var sess = {
   secret: 'keyboard cat',
   cookie: {
+    
 
   }
 }
@@ -51,10 +53,10 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("/client/build"));
 }
 // Bring in all of the routes from the routes folder r
-
+app.use("/api",apiRoutes);
 app.use(routes)
 
-// bu
+// This 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });

@@ -5,7 +5,9 @@
     width: 100%;
     background-size: cover;
     background-position: center;
-    position: fixed;
+    position: relative;
+    overflow: auto;
+    
 }
 
 .food::after {

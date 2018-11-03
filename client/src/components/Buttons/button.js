@@ -1,15 +1,20 @@
 import React from "react";
-import{ButtonToolbar,Button} from "react-bootstrap";
+import{ButtonToolbar,MenuItem,SplitButton} from "react-bootstrap";
 
 const LoginButtons=(props)=>(
     <ButtonToolbar>
-        <Button href="/login/twitter" bsStyle="info" bsSize="xsmall" active>
-          Twitter
-         </Button>
-         <Button href="/login/google" bsStyle="info" bsSize="xsmall" active>
-          Google
-         </Button>
-      </ButtonToolbar>
+          <SplitButton 
+              bsSize="small"
+              title={props.name}
+              id="dropdown-size-small"
+              bsStyle="danger"
+              href="/profile"
+          >
+              <MenuItem eventKey="1">View Starred</MenuItem>
+              <MenuItem divider />
+              <MenuItem onClick={props.click} eventKey="4">Sign Out</MenuItem>
+          </SplitButton>
+            </ButtonToolbar>
 )
 export default LoginButtons;
 

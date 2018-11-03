@@ -4,7 +4,7 @@ const Schema=mongoose.Schema;
 const userSchema= new Schema({
     googleId:{type:String,default:null},
     twitterId:{type:String,default:null},
-    userName:String,
+    username:String,
     password:{type:String,default:null},
     email:String
     
@@ -13,3 +13,4 @@ const userSchema= new Schema({
 const User=mongoose.model("user",userSchema);
 
 module.exports=User;
+
